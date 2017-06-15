@@ -38,9 +38,8 @@ public class BeleggingDAO extends BaseDAO {
 			
 			pstmt3.executeUpdate();
 			pstmt3.close();
-			
-			conn.close();
 
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}

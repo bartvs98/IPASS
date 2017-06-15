@@ -22,9 +22,8 @@ public class KoersveranderingDAO extends BaseDAO {
 			
 			pstmt.executeUpdate();
 			pstmt.close();
-			
-			conn.close();
 
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
@@ -44,6 +43,8 @@ public class KoersveranderingDAO extends BaseDAO {
 
 				results.add(koersverandering);
 			}
+			
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}

@@ -10,9 +10,9 @@ public class UserDAO extends BaseDAO {
 		String role = null;
 		String query = "SELECT role FROM useraccount WHERE username = ? AND password = ?";
 
-		try (Connection con = super.getConnection()) {
+		try (Connection conn = super.getConnection()) {
 
-			PreparedStatement pstmt = con.prepareStatement(query);
+			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 
@@ -20,6 +20,7 @@ public class UserDAO extends BaseDAO {
 			if (rs.next())
 				role = rs.getString("role");
 
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
@@ -31,15 +32,16 @@ public class UserDAO extends BaseDAO {
 		int userID = 0;
 		String query = "SELECT userid FROM useraccount WHERE username = ? ";
 
-		try (Connection ccon = super.getConnection()) {
+		try (Connection conn = super.getConnection()) {
 
-			PreparedStatement pstmt = ccon.prepareStatement(query);
+			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, username);
 
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next())
 				userID = rs.getInt("userid");
-
+			
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}

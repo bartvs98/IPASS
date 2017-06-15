@@ -30,6 +30,8 @@ public class RekeningDAO extends BaseDAO {
 
 				results.add(rekening);
 			}
+			
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
@@ -49,6 +51,7 @@ public class RekeningDAO extends BaseDAO {
 				results.add(bijafschrift);
 			}
 			
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
@@ -75,6 +78,7 @@ public class RekeningDAO extends BaseDAO {
 				results.add(belegging);
 			}
 			
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
@@ -98,6 +102,7 @@ public class RekeningDAO extends BaseDAO {
 				results.add(koersverandering);
 			}
 			
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
@@ -128,8 +133,8 @@ public class RekeningDAO extends BaseDAO {
 
 			pstmt.executeUpdate();
 			pstmt.close();
-			conn.close();
 
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
@@ -145,8 +150,8 @@ public class RekeningDAO extends BaseDAO {
 
 			pstmt.executeUpdate();
 			pstmt.close();
-			conn.close();
 
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			return false;
@@ -164,8 +169,8 @@ public class RekeningDAO extends BaseDAO {
 
 			pstmt.executeUpdate();
 			pstmt.close();
-			conn.close();
 
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}

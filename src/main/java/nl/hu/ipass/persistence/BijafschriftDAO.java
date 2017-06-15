@@ -17,8 +17,8 @@ public class BijafschriftDAO extends BaseDAO {
 
 			pstmt.executeUpdate();
 			pstmt.close();
-			conn.close();
 
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
