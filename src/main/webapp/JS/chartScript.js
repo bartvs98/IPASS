@@ -35,7 +35,9 @@ function chart(datasets, div){
   					display: true,
   					labelString: 'Waarde'
   				},
-          stacked: false
+          stacked: false,
+          responsive: true,
+          maintainAspectRatio: false
   			}],
   		}
   	}
