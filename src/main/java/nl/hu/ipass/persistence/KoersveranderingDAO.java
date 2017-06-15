@@ -53,6 +53,6 @@ public class KoersveranderingDAO extends BaseDAO {
 	}
 	
 	public List<Koersverandering> findKoersverandering(int userID){
-		return selectKoersverandering("SELECT k.datum, sum(k.totaal) FROM rekening r, belegging b, koersverandering k WHERE r.rekeningnr = b.rekeningnr AND b.naam = k.aandeelnaam AND r.userID = " + userID + " GROUP BY k.datum");
+		return selectKoersverandering("SELECT k.datum, sum(k.totaal) FROM rekening r, belegging b, koersverandering k WHERE r.rekeningnr = b.rekeningnr AND b.naam = k.aandeelnaam AND r.userID = " + userID + " GROUP BY k.datum ORDER BY k.datum");
 	}
 }

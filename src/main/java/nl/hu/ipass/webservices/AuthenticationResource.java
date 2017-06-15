@@ -42,7 +42,7 @@ public class AuthenticationResource {
 
 			// Issue a token for the user
 			Calendar expiration = Calendar.getInstance();
-			expiration.add(Calendar.MINUTE, 30);
+			expiration.add(Calendar.MINUTE, 60);
 
 			String token = Jwts.builder().setSubject(username).claim("role", role).setExpiration(expiration.getTime())
 					.signWith(SignatureAlgorithm.HS512, key).compact();
