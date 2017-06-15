@@ -27,7 +27,7 @@ import nl.hu.ipass.model.ServiceProvider;
 public class RekeningRecource {
 
 	@GET
-//	@RolesAllowed("user")
+	@RolesAllowed("user")
 	@Path("{userID}")
 	@Produces("application/json")
 	public String getAllRekenigen(@PathParam("userID") int userID) {

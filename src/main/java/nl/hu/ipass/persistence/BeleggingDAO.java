@@ -9,7 +9,7 @@ import nl.hu.ipass.model.Belegging;
 public class BeleggingDAO extends BaseDAO {
 	public Belegging addBelegging(Belegging belegging) {
 		try (Connection conn = super.getConnection()) {
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO belegging VALUES(NULL, ?, ?, ?, ?, ?, ?)");
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO belegging VALUES(nextval('belegging_id_seq'::regclass), ?, (to_date(?, 'YYYY-MM-DD')), ?, ?, ?, ?)");
 
 			pstmt.setString(1, belegging.getRekeningNr());
 			pstmt.setString(2, belegging.getDate());
@@ -29,7 +29,7 @@ public class BeleggingDAO extends BaseDAO {
 			pstmt2.executeUpdate();
 			pstmt2.close();
 			
-			PreparedStatement pstmt3 = conn.prepareStatement("INSERT INTO koersverandering VALUES(NULL, ?, ?, ?, ?)");
+			PreparedStatement pstmt3 = conn.prepareStatement("INSERT INTO koersverandering VALUES(nextval('koersverandering_id_seq'::regclass), ?, (to_date(?, 'YYYY-MM-DD')), ?, ?)");
 			
 			pstmt3.setString(1, belegging.getNaam());
 			pstmt3.setString(2, belegging.getDate());
@@ -75,7 +75,7 @@ public class BeleggingDAO extends BaseDAO {
 	
 	public Belegging verkoopBelegging(Belegging belegging) {
 		try (Connection conn = super.getConnection()) {
-			PreparedStatement pstmt = conn.prepareStatement("UPDATE belegging SET datum = ?, aantal = ?, koers = ?, totaal = ? WHERE id = ?");
+			PreparedStatement pstmt = conn.prepareStatement("UPDATE belegging SET datum = (to_date(?, 'YYYY-MM-DD')), aantal = ?, koers = ?, totaal = ? WHERE id = ?");
 
 			pstmt.setString(1, belegging.getDate());
 			pstmt.setInt(2, belegging.getAantal());

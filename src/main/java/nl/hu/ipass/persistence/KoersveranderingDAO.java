@@ -13,7 +13,7 @@ import nl.hu.ipass.model.Koersverandering;
 public class KoersveranderingDAO extends BaseDAO {
 	public Koersverandering addKoers(Koersverandering koersverandering) {
 		try (Connection conn = super.getConnection()) {
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO koersverandering VALUES(NULL, ?, ?, ?, ?)");
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO koersverandering VALUES(nextval('koersverandering_id_seq'::regclass), ?, (to_date(?, 'YYYY-MM-DD')), ?, ?)");
 
 			pstmt.setString(1, koersverandering.getAandeelNaam());
 			pstmt.setString(2, koersverandering.getDatum());
@@ -40,7 +40,7 @@ public class KoersveranderingDAO extends BaseDAO {
 			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				Koersverandering koersverandering = new Koersverandering(rs.getString("datum"), rs.getDouble("sum(k.totaal)"));
+				Koersverandering koersverandering = new Koersverandering(rs.getString("datum"), rs.getDouble("sum"));
 
 				results.add(koersverandering);
 			}
@@ -52,6 +52,6 @@ public class KoersveranderingDAO extends BaseDAO {
 	}
 	
 	public List<Koersverandering> findKoersverandering(int userID){
-		return selectKoersverandering("SELECT k.datum, sum(k.totaal) FROM rekening r, belegging b, koersverandering k WHERE r.rekeningnr = b.rekeningnr AND b.naam = k.aandeelnaam AND r.userID = 1 GROUP BY k.datum");
+		return selectKoersverandering("SELECT k.datum, sum(k.totaal) FROM rekening r, belegging b, koersverandering k WHERE r.rekeningnr = b.rekeningnr AND b.naam = k.aandeelnaam AND r.userID = " + userID + " GROUP BY k.datum");
 	}
 }

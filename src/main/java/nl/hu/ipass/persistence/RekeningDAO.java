@@ -119,7 +119,7 @@ public class RekeningDAO extends BaseDAO {
 
 	public Rekening addRekening(Rekening rekening) {
 		try (Connection conn = super.getConnection()) {
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO rekening VALUES(NULL, ?, ?, ?, ?)");
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO rekening VALUES(nextval('rekening_id_seq'::regclass), ?, ?, ?, ?)");
 
 			pstmt.setString(1, rekening.getRekeningNr());
 			pstmt.setString(2, rekening.getDepotNaam());

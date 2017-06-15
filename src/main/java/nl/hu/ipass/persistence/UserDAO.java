@@ -29,7 +29,7 @@ public class UserDAO extends BaseDAO {
 	
 	public int findUserIdForUser(String username) {
 		int userID = 0;
-		String query = "SELECT userID FROM useraccount WHERE username = ? ";
+		String query = "SELECT userid FROM useraccount WHERE username = ? ";
 
 		try (Connection ccon = super.getConnection()) {
 
@@ -38,7 +38,7 @@ public class UserDAO extends BaseDAO {
 
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next())
-				userID = rs.getInt("userID");
+				userID = rs.getInt("userid");
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

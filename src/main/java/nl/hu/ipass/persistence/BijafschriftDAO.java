@@ -9,7 +9,7 @@ import nl.hu.ipass.model.Bijafschrift;
 public class BijafschriftDAO extends BaseDAO {
 	public Bijafschrift addBijafschrift(Bijafschrift bijafschrift) {
 		try (Connection conn = super.getConnection()) {
-			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bijafschrift VALUES(?, ?, -?)");
+			PreparedStatement pstmt = conn.prepareStatement("INSERT INTO bijafschrift VALUES(?, (to_date(?, 'YYYY-MM-DD')), -?)");
 
 			pstmt.setString(1, bijafschrift.getRekeningNr());
 			pstmt.setString(2, bijafschrift.getDate());
