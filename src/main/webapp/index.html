@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" href="CSS/mainStyle.css">
+    <link rel="stylesheet" href="CSS/popupStyle.css">
+    <link rel="stylesheet" href="CSS/loginStyle.css">
+    <link rel="stylesheet" href="CSS/buttonStyle.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
+
+    <script src="JS/loginScript.js"></script>
+
+    <title>Login</title>
+  </head>
+  <body>
+    <!-- Main wrapper -->
+    <div class="wrapper">
+      <!-- Login Container -->
+      <div class="loginContainer">
+        <div class="imgContainer">
+          <img src="avatar.png" class="Avatar">
+        </div>
+        <div id="loginForm">
+          <span class="inputSpan">Gebruikersnaam: </span><input>
+          <span class="inputSpan">Wachtwoord: </span><input type="password">
+          <button id="confirmLogin" class="blueButton" style="width:100%;">Login</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup div -->
+    <div id="overlay" style="display:none;"></div>
+    <div style="display: none;" id="popUp">
+      <p id="msg"></p>
+      <button id="confirmButton" class="blueButton" style="margin-right:0;">ok</button>
+    </div>
+  </body>
+</html>

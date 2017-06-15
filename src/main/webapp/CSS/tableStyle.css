@@ -1,0 +1,46 @@
+table {
+  width: auto;
+	border-spacing: 0;
+}
+
+thead {padding-bottom: 5px;}
+
+th {text-align: left;}
+
+td {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	cursor: pointer;
+}
+
+#aandeelTableHolder th:nth-child(1){width: 130px;}
+#aandeelTableHolder th:nth-child(2){width: 350px;}
+#aandeelTableHolder th:nth-child(3){width: 120px;}
+#aandeelTableHolder th:nth-child(4){width: 150px;}
+
+#aandeelTableHolder td:nth-child(1){width: 130px;}
+#aandeelTableHolder td:nth-child(2){width: 350px;}
+#aandeelTableHolder td:nth-child(3){width: 120px;}
+#aandeelTableHolder td:nth-child(4){width: 150px;}
+#aandeelTableHolder td:nth-child(5){width: 150px;}
+
+th:nth-child(1){width: 130px;}
+th:nth-child(2){width: 120px;}
+th:nth-child(3){width: 120px;}
+
+td:nth-child(1){width: 130px;}
+td:nth-child(2){width: 120px;}
+td:nth-child(3){width: 120px;}
+
+tr:hover {background-color: #FFFDE7;}
+
+tbody {
+	display: block;
+	max-height: 750px;
+	overflow: auto;
+}
+
+thead, tbody tr {
+	display: table;
+	table-layout: fixed;
+}

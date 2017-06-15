@@ -1,0 +1,23 @@
+.wrapper{
+  max-width: 380px;
+  padding: 8% 0 0;
+  margin: auto;
+  display: grid;
+}
+
+.loginContainer{
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.imgContainer{
+  text-align: center;
+  margin: 0px 0 12px 0;
+}
+
+img.Avatar{
+  width: 90%;
+  margin-bottom: 24px;
+  border-radius: 50%;
+}

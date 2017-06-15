@@ -1,0 +1,70 @@
+.Radio ul li input{
+  width: 25px;
+  margin: 0;
+  position: absolute;
+  visibility: hidden;
+}
+
+.Radio ul li{
+  padding: 15px;
+  display: block;
+  width: 15%;
+}
+
+.Radio ul li label{
+  color: grey;
+  transition: all 0.3s;
+  position: relative;
+  padding: 5px 5px 5px 80px;
+  height: 30px;
+  margin-left: -80px;
+  z-index: 9;
+  cursor: pointer;
+}
+
+.Radio ul li:hover label{
+  color: #2196F3;
+}
+
+.Radio ul li .check{
+  display: block;
+  position: relative;;
+  border: 2px solid grey;
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+  margin: -15px;
+  margin-left: -40px;
+  bottom: 6px;
+  z-index: 5;
+	transition: border .25s linear;
+}
+
+.Radio ul li:hover .check {
+  border: 2px solid #2196F3;
+}
+
+.Radio ul li .check::before {
+  display: block;
+	content: '';
+  position: absolute;
+  border-radius: 100%;
+  height: 10px;
+  width: 10px;
+  top: 5px;
+  left: 5px;
+  margin: auto;
+	transition: background 0.25s linear;
+}
+
+.Radio ul li input:checked ~ .check {
+  border: 2px solid #2196F3;
+}
+
+.Radio ul li input:checked ~ .check::before{
+  background: #2196F3;
+}
+
+.Radio ul li input:checked ~ label{
+  color: #2196F3;
+}
