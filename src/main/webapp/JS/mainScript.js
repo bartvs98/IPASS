@@ -19,7 +19,7 @@ if(window.sessionStorage.getItem("sessionToken") != null){
     $(document).tooltip();
   })
 } else {
-  window.location.href = "../ipass";
+  window.location.href = "../";
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ function initPage(){
       }
     },
     error: function(response) {
-      window.location.href = "../ipass";
+      window.location.href = "../";
     }
   });
 }
@@ -147,7 +147,7 @@ $(document).on("click", "#logoutButton", function(){
 function logout(){
   window.sessionStorage.clear();
   window.localStorage.clear();
-  window.location.href = "../ipass";
+  window.location.href = "../";
 }
 
 //-------------------------------------------------------------------------------------------------------------------
