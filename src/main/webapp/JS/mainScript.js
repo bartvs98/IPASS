@@ -172,6 +172,9 @@ $(document).on("click", "#confirmButton", function(){
   if (msg == "Weet u zeker dat u deze transactie wilt doen?"){
     addTransaction();
   }
+  if (msg == "Weet u zeker dat u deze koersverandering wilt verwijderen?"){
+    deleteKoersverandering();
+  }
 });
 
 //-------------------------------------------------------------------------------------------------------------------

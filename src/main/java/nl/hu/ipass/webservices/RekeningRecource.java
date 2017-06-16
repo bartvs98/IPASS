@@ -62,6 +62,7 @@ public class RekeningRecource {
 				JsonArrayBuilder jab4 = Json.createArrayBuilder();
 				JsonObjectBuilder job4 = Json.createObjectBuilder();
 				for (Koersverandering k : b.getKoersverandering()) {
+					job4.add("id", k.getId());
 					job4.add("naam", k.getAandeelNaam());
 					job4.add("datum", k.getDatum());
 					job4.add("koers", k.getKoers());

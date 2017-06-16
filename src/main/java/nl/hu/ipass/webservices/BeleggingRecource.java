@@ -100,6 +100,19 @@ public class BeleggingRecource {
 		return Response.ok().build();
 	}
 	
+	@DELETE
+	@RolesAllowed("user")
+	@Path("deleteKoersverandering/{id}")
+	@Produces("abblication/json")
+	public Response deleteKoersverandering(@PathParam("id") int id) {
+		Service service = ServiceProvider.getService();
+		
+		Koersverandering deleteKoers = new Koersverandering(id);
+		service.deleteKoersverandering(deleteKoers);
+		
+		return Response.ok().build();
+	}
+	
 	@POST
 	@RolesAllowed("user")
 	@Path("verkoop/{id}")

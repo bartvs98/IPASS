@@ -64,6 +64,10 @@ public class Service {
 	public void addKoers(Koersverandering koersverandering){
 		koedao.addKoers(koersverandering);
 	}
+	
+	public void deleteKoersverandering(Koersverandering koersverandering) {
+		koedao.deleteKoers(koersverandering);
+	}
 
 	public List<Koersverandering> findKoersverandering(int userID) {
 		return koedao.findKoersverandering(userID);

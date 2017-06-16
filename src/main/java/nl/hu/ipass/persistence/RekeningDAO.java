@@ -98,7 +98,7 @@ public class RekeningDAO extends BaseDAO {
 			ResultSet rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
-				Koersverandering koersverandering = new Koersverandering(rs.getString("aandeelnaam"), rs.getString("datum"), rs.getDouble("koers"), rs.getDouble("totaal"));
+				Koersverandering koersverandering = new Koersverandering(rs.getInt("id"), rs.getString("aandeelnaam"), rs.getString("datum"), rs.getDouble("koers"), rs.getDouble("totaal"));
 				results.add(koersverandering);
 			}
 			

@@ -64,6 +64,13 @@ public class BeleggingDAO extends BaseDAO {
 			pstmt2.executeUpdate();
 			pstmt2.close();
 			
+			PreparedStatement pstmt3 = conn.prepareStatement("DELETE FROM bijafschrift WHERE rekeningnr = ?");
+			
+			pstmt3.setString(1, belegging.getRekeningNr());
+			
+			pstmt3.executeUpdate();
+			pstmt3.close();
+			
 			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();

@@ -1,10 +1,20 @@
 package nl.hu.ipass.model;
 
 public class Koersverandering {
+	private int id;
 	private String aandeelNaam;
 	private String datum;
 	private double koers;
 	private double totaal;
+	
+	public Koersverandering(int id, String aandeelNaam, String datum, double koers, double totaal) {
+		super();
+		this.id = id;
+		this.aandeelNaam = aandeelNaam;
+		this.datum = datum;
+		this.koers = koers;
+		this.totaal = totaal;
+	}
 	
 	public Koersverandering(String aandeelNaam, String datum, double koers, double totaal) {
 		super();
@@ -25,6 +35,19 @@ public class Koersverandering {
 		super();
 		this.datum = datum;
 		this.totaal = totaal;
+	}
+	
+	public Koersverandering(int id) {
+		super();
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getAandeelNaam() {

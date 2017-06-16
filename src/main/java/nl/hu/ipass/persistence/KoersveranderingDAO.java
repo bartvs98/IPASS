@@ -55,4 +55,21 @@ public class KoersveranderingDAO extends BaseDAO {
 	public List<Koersverandering> findKoersverandering(int userID){
 		return selectKoersverandering("SELECT k.datum, sum(k.totaal) FROM rekening r, belegging b, koersverandering k WHERE r.rekeningnr = b.rekeningnr AND b.naam = k.aandeelnaam AND r.userID = " + userID + " GROUP BY k.datum ORDER BY k.datum");
 	}
+	
+	public Koersverandering deleteKoers(Koersverandering koersverandering) {
+		try (Connection conn = super.getConnection()) {
+			PreparedStatement pstmt = conn.prepareStatement("DELETE FROM koersverandering WHERE id = ?");
+
+			pstmt.setInt(1, koersverandering.getId());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+
+			conn.close();
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		}
+
+		return koersverandering;
+	}
 }

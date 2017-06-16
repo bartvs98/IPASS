@@ -175,6 +175,7 @@ function displayBeleggingData(data){
   $("#aandeelContainer").html("")
   $("#beleggingRekeningNr").val(data.rekeningnr);
 
+  //Dynamicly building the same divs depending on the ammount of aandelen. (not verry proud of the way its done)
   for (var i = 0; i < data.belegging.length; i++) {
     $("#aandeelContainer").append('<div class="mainContainer" id="tableDiv">' +
                         "<i id='deleteBelegging' class='material-icons trashBeleggingButton' title='Verwijder belegging'>delete</i>" +
@@ -245,10 +246,13 @@ function displayBeleggingData(data){
                         '</table>' +
                       '</div>');
 
+      //koersveranderings table.
       for (var k = 0; k < data.belegging[i].koersverandering.length; k++) {
         $("#koersTable" + data.belegging[i].id).append("<tr><td>" + data.belegging[i].koersverandering[k].datum + "</td>" +
                                "<td id='" + data.belegging[i].id + "'>" + data.belegging[i].koersverandering[k].koers + "</td>" +
-                               "<td>" + data.belegging[i].koersverandering[k].totaal + "</td></tr>");
+                               "<td>" + data.belegging[i].koersverandering[k].totaal + "</td>" +
+                               '<td> <i id="deleteKoersverandering" style="margin:0; font-size:25px;" class="material-icons trashButton">delete</i></td>'+
+                               "<td style='visibility:hidden;' id='koersID'>" + data.belegging[i].koersverandering[k].id + "</td></tr>");
       }
 
       allArray = [];
@@ -276,6 +280,7 @@ function displayBeleggingData(data){
   $(".addKoersForm").hide();
   $(".transactionForm").hide();
 
+  //Calculating the total value on keyup.
   $(".newKoers").keyup(function(){
     var koers = $(this).parent().find("#newKoers").val();
     var aantal = $(this).parent().parent().find("#aandelenAantal").text();
@@ -308,15 +313,6 @@ function displayBeleggingData(data){
   var today = yyyy+'-'+mm+'-'+dd;
   $(".koersDate").val(today);
   $(".transactionDate").val(today);
-
-  // $("#beleggingTable tr").each(function(){
-  //   var col_val = $(this).find("td:eq(7)").text();
-  //   if (col_val == 1){
-  //     $(this).css("color", "red");
-  //   } else {
-  //     $(this).css("color", "#00E676");
-  //   }
-  // });
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -336,6 +332,32 @@ $(function(){
     $("#aandeelTotaal").val(koers * aantal);
   })
 })
+
+//-------------------------------------------------------------------------------------------------------------------
+//Function to delete one individual koersverandering.
+$(document).on("click", "#deleteKoersverandering", function(){
+  koersid = $(this).parent().parent().find("#koersID").text();
+  $("#msg").html("Weet u zeker dat u deze koersverandering wilt verwijderen?");
+  popUp();
+})
+
+function deleteKoersverandering(){
+  var uri = "restservices/beleggingen/deleteKoersverandering/" + koersid;
+
+  $.ajax(uri, {
+      method: "delete",
+      beforeSend: function (xhr) {
+        var token = window.sessionStorage.getItem("sessionToken");
+        xhr.setRequestHeader( 'Authorization', 'Bearer ' + token);
+      },
+    success: function(response) {
+      window.location.reload();
+    },
+    error: function(response) {
+      console.log(response);
+    }
+  });
+}
 
 //-------------------------------------------------------------------------------------------------------------------
 //Function to delete one individual belegging.
@@ -458,6 +480,7 @@ $(document).on("click", "#showChart", function(){
     return index == self.indexOf(elem);
   })
 
+  // Building the chart datasets.
   for (var i = 0; i < uniqueAandeelArray.length; i++) {
     datasets.push({
       label: uniqueAandeelArray[i],
