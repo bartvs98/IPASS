@@ -462,6 +462,8 @@ function addBelegging(){
 //-------------------------------------------------------------------------------------------------------------------
 //Function to pass datasets to the chart.
 $(document).on("click", "#showChart", function(){
+  $("#rendementChart").remove();
+  $("#chartHolder").append('<canvas style="display:block;" class="rendementChart"></canvas>')
   $("#chartContainer").show();
 
   if ($("#chartContainer").is(":hidden") == false){
