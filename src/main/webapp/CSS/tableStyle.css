@@ -26,11 +26,11 @@ td {
 
 th:nth-child(1){width: 130px;}
 th:nth-child(2){width: 120px;}
-th:nth-child(3){width: 120px;}
+th:nth-child(3){width: 220px;}
 
 td:nth-child(1){width: 130px;}
 td:nth-child(2){width: 120px;}
-td:nth-child(3){width: 120px;}
+td:nth-child(3){width: 220px;}
 
 tr:hover {background-color: #FFFDE7;}
 
