@@ -90,6 +90,9 @@ $(document).on("click", "#addTransaction", function(){
   transactionID = parseInt($(this).parent().parent().find(".beleggingID").text());
   transactionDate = $(this).parent().find("#transactionDate").val();
   currentAantal = parseInt($(this).parent().parent().find("#aandelenAantal").text());
+  currentTotaal = $(this).parent().parent().find("#beleggingTotaal").text();
+  currentTotaal = currentTotaal.replace("€ ", "");
+  currentTotaal = parseFloat(currentTotaal);
   transactionAantal = parseInt($(this).parent().find("#transactionAantal").val());
   transactionKoers = parseFloat($(this).parent().find("#transactionKoers").val());
   transactionTotaal = parseFloat($(this).parent().find("#transactionTotaal").val());
@@ -105,30 +108,26 @@ $(document).on("click", "#addTransaction", function(){
 function addTransaction(){
   if(transactionType == "verkoop"){
     var newAantal = currentAantal - transactionAantal;
-    var currentTotaal = currentAantal * transactionKoers;
-    var differenceTotaal = transactionTotaal;
-    var newTotaal = currentTotaal - differenceTotaal;
+    var newTotaal = currentTotaal - transactionTotaal;
 
     var data = {"id": transactionID,
                 "datum": transactionDate,
                 "aandelenAantal": newAantal,
                 "koers": transactionKoers,
                 "totaal": newTotaal,
-                "bedrag": differenceTotaal * -1,
+                "bedrag": transactionTotaal * -1,
                 "rekeningnr": rekeningnr
     };
   } else {
     var newAantal = currentAantal + transactionAantal;
-    var currentTotaal = currentAantal * transactionKoers;
-    var differenceTotaal = transactionTotaal;
-    var newTotaal = currentTotaal + differenceTotaal;
+    var newTotaal = currentTotaal + transactionTotaal;
 
     var data = {"id": transactionID,
                 "datum": transactionDate,
                 "aandelenAantal": newAantal,
                 "koers": transactionKoers,
                 "totaal": newTotaal,
-                "bedrag": differenceTotaal,
+                "bedrag": transactionTotaal,
                 "rekeningnr": rekeningnr
     };
   }

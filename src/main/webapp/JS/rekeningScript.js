@@ -50,10 +50,8 @@ $(document).on("click", "#addNewRekening", function(){
       rekeningnr = array[0];
       depotnaam = array[1];
       saldo = parseFloat(array[2]);
-      ok = true
     } else {
       console.log("One or more fields are empty!");
-      ok = false
     }
   }
 
@@ -78,7 +76,8 @@ $(document).on("click", "#addNewRekening", function(){
             xhr.setRequestHeader( 'Authorization', 'Bearer ' + token);
           },
         success: function(response) {
-          window.location.reload();
+          $("#newRekeningForm").slideToggle();
+          initPage();
         },
       });
     } else {

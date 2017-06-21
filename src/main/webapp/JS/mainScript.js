@@ -25,6 +25,7 @@ if(window.sessionStorage.getItem("sessionToken") != null){
 //-------------------------------------------------------------------------------------------------------------------
 //Function which launches on startup and loads all rekeningen.
 function initPage(){
+  $(".rekeningBox").remove();
   var userID =  window.sessionStorage.getItem("userID")
   var uri = "restservices/rekeningen/" + userID;
 
