@@ -137,29 +137,4 @@ public class BeleggingRecource {
 		service.updateRekening(updateSaldo);
 		return Response.ok().build();
 	}
-	
-	@POST
-	@RolesAllowed("user")
-	@Path("koop/{id}")
-	@Produces("application/json")
-	public Response koopBelegging(InputStream is) {
-		Service service = ServiceProvider.getService();
-		JsonObject object = Json.createReader(is).readObject();
-		
-		int id = object.getInt("id");
-		String datum = object.getString("datum");
-		int aantal = object.getInt("aandelenAantal");
-		double koers = Double.valueOf(object.get("koers").toString());
-		double totaal = Double.valueOf(object.get("totaal").toString());
-		double bedrag = Double.valueOf(object.get("bedrag").toString());
-		String rekeningnr = object.getString("rekeningnr");
-		
-		Belegging verkoop = new Belegging(id, datum, koers, aantal, totaal);
-		Bijafschrift bijschrift = new Bijafschrift(rekeningnr, datum, bedrag);
-		Rekening updateSaldo = new Rekening(rekeningnr, bedrag);
-		service.verkoopBelegging(verkoop);
-		service.addBijafschrift(bijschrift);
-		service.updateRekening(updateSaldo);
-		return Response.ok().build();
-	}
 }

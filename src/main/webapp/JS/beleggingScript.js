@@ -87,6 +87,8 @@ $(document).on("click", "#showTransactionFrom", function(){
 //-------------------------------------------------------------------------------------------------------------------
 //Transaction confirmation popup.
 $(document).on("click", "#addTransaction", function(){
+
+  //Get all needed values to make a transaction.
   transactionID = parseInt($(this).parent().parent().find(".beleggingID").text());
   transactionDate = $(this).parent().find("#transactionDate").val();
   currentAantal = parseInt($(this).parent().parent().find("#aandelenAantal").text());
@@ -106,6 +108,8 @@ $(document).on("click", "#addTransaction", function(){
 //-------------------------------------------------------------------------------------------------------------------
 //Function to post transaction
 function addTransaction(){
+
+  //Change post data based on radiobutton.
   if(transactionType == "verkoop"){
     var newAantal = currentAantal - transactionAantal;
     var newTotaal = currentTotaal - transactionTotaal;
@@ -254,6 +258,7 @@ function displayBeleggingData(data){
                                "<td style='visibility:hidden;' id='koersID'>" + data.belegging[i].koersverandering[k].id + "</td></tr>");
       }
 
+      //Building objects for the chart datasets.
       allArray = [];
 
       $("[id^='koersTable']").each(function(){
