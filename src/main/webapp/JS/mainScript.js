@@ -115,6 +115,7 @@ $(document).on("click", "#hideDiv3", function(){
 //Function to hide totalChartContainer.
 $(document).on("click", "#hideDiv4", function(){
   $("#hideDiv4").parent().parent().hide()
+  $(".rendementChart").remove();
   $("#showChart").removeClass("selectedChart")
   var hidden1 = $("#chartContainer").is(":hidden")
   var hidden2 = $("#beleggingContainer").is(":hidden")
