@@ -2,7 +2,7 @@
 An Web application I built as an college exercise.
 It uses the data you provide to visualize your shares, stocks, etc.
 
-The used language is dutch because thats the language of the employer.
+The used language within the application is dutch because thats the language of the employer.
 
 ## Build with
 * **Front-end**:
