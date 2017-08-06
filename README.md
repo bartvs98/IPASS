@@ -6,9 +6,16 @@ The used language is dutch because thats the language of the employer.
 
 ## Build with
 * **Front-end**:
-* * HTML
-* * CSS
-* * JS/JQUERY
+  * HTML
+  * CSS
+  * JS/JQUERY
+  
+* **Back-end**:
+  * RESTfull
+  * Maven
+  * JAVA
+  
+* **Database**: PostgreSQL
 
 * **Editor:** Atom
 * **Version Control:** Git
