@@ -20,6 +20,6 @@ The used language within the application is dutch because thats the language of 
 * **Editor:** Atom
 * **Version Control:** Git
 * **Debug:** Chrome Devtools
-* **Browsers tested:** Chrome ~~Chrome Mobile~~ 
+* **Browsers tested:** Chrome, ~~Chrome Mobile~~ 
 
 (its not optimized for mobile devices since the employer did not require it to be).
