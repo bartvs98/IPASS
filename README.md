@@ -5,10 +5,10 @@ It uses the data you provide to visualize your shares, stocks, etc.
 The used language is dutch because thats the language of the employer.
 
 ## Build with
-* Front-end:
-** HTML
-** CSS
-** JS/JQUERY
+* **Front-end**:
+* * HTML
+* * CSS
+* * JS/JQUERY
 
 * **Editor:** Atom
 * **Version Control:** Git
